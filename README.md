@@ -36,7 +36,7 @@ Transfer function used for this neural network is `f(x) = tanh(x)`. The derivati
 ![](GithubImages/Five.png)
 
 ## Usage
-<code>git clone https://github.com/NenadGvozdenac/NeuralNetwork</code>
+<code>git clone https://github.com/NenadGvozdenac/Logic-Gate-Neural-Network</code>
 
 <code>$ g++ NeuralNetwork/Application/main.cpp -o NeuralNetwork/Application/Program</code>
 
