@@ -7,19 +7,16 @@ Thanking the MISS class from College (Modeling and simulation of systems), we ha
 ## What does it do?
 The program is designated to use inputs (`std::vector` of inputs). Inputs used here are a 3d vector, a matrix, of `std::vector`(s). The inputs are stored and sent to the neural network, where they are processed. The output is a vector of results.
 
-## XOR table 
-| A 	| B 	| X 	|
-|---	|---	|---	|
-| 0 	| 0 	| 0 	|
-| 0 	| 1 	| 1 	|
-| 1 	| 0 	| 1 	|
-| 1 	| 1 	| 0 	|
+## Table of operations
+| A 	| B 	| A ^ B 	| A \| B 	| A & B 	|
+|:---:	|:---:	|:---:	|:---:	|:---:	|
+| 0 	| 0 	| 0 	| 0 	| 0 	|
+| 0 	| 1 	| 1 	| 1 	| 0 	|
+| 1 	| 0 	| 1 	| 1 	| 0 	|
+| 1 	| 1 	| 0 	| 1 	| 1 	|
 
-## Example of 0 xor 0 (0 ^ 0) = 0
-![](GithubImages/One.png)
-
-## Example of 0 xor 1 (0 ^ 1) = 1
-![](GithubImages/Two.png)
+## Examples
+![](GithubImages/Example1.png) ![](GithubImages/Example2.png)
 
 ## More in-depth knowledge of Neural Network used
 The neural network used is a `fully-connected`, `feed-forward` neural network. All nodes (neurons) are connected with every neuron in the next (previous) layer.
@@ -37,6 +34,15 @@ Backpropagation, or backward propagation of errors, is an algorithm that is desi
 Transfer function used for this neural network is `f(x) = tanh(x)`. The derivative is `f'(x) = 1 - tanh^2(x)` which can be approximated to `g(x) = 1 - x^2` for these values.
 
 ![](GithubImages/Five.png)
+
+## Usage
+<code>git clone https://github.com/NenadGvozdenac/NeuralNetwork</code>
+
+<code>$ g++ NeuralNetwork/Application/main.cpp -o NeuralNetwork/Application/Program</code>
+
+<code>$ ./NeuralNetwork/Application/Program.exe</code>
+
+You can add an additional parameter after the `.exe`, indicating a number of tests. For example: <code>$ ./NeuralNetwork/Application/Program.exe 20000</code>.
 
 ## Credits
 [Abhishek Pandey](https://www.youtube.com/@abhishekpandey4427) - tutorial for Neural network

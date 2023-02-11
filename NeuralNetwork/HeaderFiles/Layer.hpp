@@ -4,13 +4,9 @@
 #include "../FunctionalityFiles/Neuron.cpp"
 
 class Layer {
-
-private:
-    std::vector<Neuron> neurons;
-
 public:
+    std::vector<Neuron> neurons;
     void setNeurons(std::vector<Neuron> neurons);
-    std::vector<Neuron>& getNeurons();
     void addNewNeuron(unsigned outputNum, int neuronNum);
 };
 

@@ -24,16 +24,16 @@ class Neuron {
 
 private:
     double outputValue;
-    std::vector<Connection> outputWeights;
+    
     int index;
     double gradient;
 
 public:
     Neuron(unsigned numOutputs, int index);
+    std::vector<Connection> outputWeights;
     void setOutputValue(double outputValue);
     double getOutputValue();
     void setOutputWeights(std::vector<Connection> outputWeights);
-    std::vector<Connection> getOutputWeights();
     void feedForwardNeuron(Layer& previousLayer);
     static double transferFunction(double x);
     static double transferFunctionDerivative(double x);

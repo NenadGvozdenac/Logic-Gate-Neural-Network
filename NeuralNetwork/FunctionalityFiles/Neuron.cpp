@@ -3,13 +3,11 @@
 
 #include "../HeaderFiles/Neuron.hpp"
 
-double Neuron::eta = 0.15;
+double Neuron::eta = 0.2;
 double Neuron::alpha = 0.5;
 
 Neuron::Neuron(unsigned numOutputs, int index) {
-    std::cout << numOutputs << std::endl;
     for(unsigned i = 0; i < numOutputs; ++i) {
-        std::cout << "Created conn.";
         this->outputWeights.push_back(Connection());
     }
 
@@ -28,10 +26,6 @@ void Neuron::setOutputValue(double outputValue) {
 
 double Neuron::getOutputValue() {
     return outputValue;
-}
-
-std::vector<Connection> Neuron::getOutputWeights() {
-    return this->outputWeights;
 }
 
 void Neuron::setOutputWeights(std::vector<Connection> outputWeights) {

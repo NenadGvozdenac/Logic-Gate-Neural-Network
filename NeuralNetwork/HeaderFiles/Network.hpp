@@ -15,7 +15,6 @@ private:
     double error;
 
 public:
-    Network();
     ~Network();
     Network(std::vector<unsigned>&);                       // Topology (3, 2, 1) -> 3 neurons in input layer, 2 neurons in hidden layer, 1 neuron in outter layer
 
