@@ -42,7 +42,9 @@ Transfer function used for this neural network is `f(x) = tanh(x)`. The derivati
 
 <code>$ ./NeuralNetwork/Application/Program.exe</code>
 
-You can add an additional parameter after the `.exe`, indicating a number of tests. For example: <code>$ ./NeuralNetwork/Application/Program.exe 20000</code>.
+You can add an additional parameter after the `.exe`, indicating a number of tests. 
+
+For example: <code>$ ./NeuralNetwork/Application/Program.exe 20000</code>.
 
 ## Credits
 [Abhishek Pandey](https://www.youtube.com/@abhishekpandey4427) - tutorial for Neural network
