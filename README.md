@@ -33,5 +33,10 @@ The method used for sending data is a `feed-forward` method. Feedforward is the 
 The method used for training the neural network, is `data-propagation` method.
 Backpropagation, or backward propagation of errors, is an algorithm that is designed to test for errors working back from output nodes to input nodes.
 
+## Activator (transfer) function
+Transfer function used for this neural network is `f(x) = tanh(x)`. The derivative is `f'(x) = 1 - tanh^2(x)` which can be approximated to `g(x) = 1 - x^2` for these values.
+
+![](GithubImages/Five.png)
+
 ## Credits
 [Abhishek Pandey](https://www.youtube.com/@abhishekpandey4427) - tutorial for Neural network
