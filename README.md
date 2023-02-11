@@ -1,6 +1,16 @@
 # NeuralNetwork
 Neural Network that is developed in plain C++ to be able to represent a black-box model of a logic gate given to it by training it.
 
+## Table of contents
+- [MISS knowledge](https://github.com/NenadGvozdenac/Logic-Gate-Neural-Network/#miss-knowledge)
+- [What does it do?](https://github.com/NenadGvozdenac/Logic-Gate-Neural-Network/#what-does-it-do)
+- [Table of operations](https://github.com/NenadGvozdenac/Logic-Gate-Neural-Network/#table-of-operations)
+- [Examples](https://github.com/NenadGvozdenac/Logic-Gate-Neural-Network/#examples)
+- [More in-depth knowledge](https://github.com/NenadGvozdenac/Logic-Gate-Neural-Network/#more-in-depth-knowledge-of-neural-network-used)
+- [Activator transfer function](https://github.com/NenadGvozdenac/Logic-Gate-Neural-Network#activator-transfer-function)
+- [Usage](https://github.com/NenadGvozdenac/Logic-Gate-Neural-Network#usage)
+- [Credits](https://github.com/NenadGvozdenac/Logic-Gate-Neural-Network#usage)
+
 ## MISS knowledge
 Thanking the MISS class from College (Modeling and simulation of systems), we have understood how a Neural Network works. Here that knowledge, alongside OOP concepts is used to showcase a prototype of a black-box model of a neural network.
 
