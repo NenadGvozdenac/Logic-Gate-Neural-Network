@@ -3,12 +3,23 @@
 
 #include "../HeaderFiles/Neuron.hpp"
 
+double Neuron::eta = 0.15;
+double Neuron::alpha = 0.5;
+
 Neuron::Neuron(unsigned numOutputs, int index) {
-    for(unsigned i = 0; i < numOutputs; i++) {
+    std::cout << numOutputs << std::endl;
+    for(unsigned i = 0; i < numOutputs; ++i) {
+        std::cout << "Created conn.";
         this->outputWeights.push_back(Connection());
     }
 
     this->index = index;
+    this->setOutputValue(0.005);
+}
+
+void Neuron::calculateOutputGradients(double targetValue) {
+    double delta = targetValue - this->outputValue;
+    this->gradient = delta * Neuron::transferFunctionDerivative(this->outputValue);
 }
 
 void Neuron::setOutputValue(double outputValue) {
@@ -16,7 +27,7 @@ void Neuron::setOutputValue(double outputValue) {
 }
 
 double Neuron::getOutputValue() {
-    return this->outputValue;
+    return outputValue;
 }
 
 std::vector<Connection> Neuron::getOutputWeights() {
@@ -52,7 +63,7 @@ double Neuron::transferFunction(double x) {
 }
 
 double Neuron::transferFunctionDerivative(double x) {
-    return 1 - pow(tanh(x), 2);
+    return 1.0 - pow(tanh(x), 2);
 }
 
 #endif

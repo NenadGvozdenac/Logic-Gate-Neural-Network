@@ -3,29 +3,18 @@
 
 #include "../HeaderFiles/Network.hpp"
 
-Network::Network() {
-    this->topology.push_back(3);    // Default constructor, constructs a default NeuralNetwork with 3 -> 2 -> 1 topology.
-    this->topology.push_back(2);
-    this->topology.push_back(1);
-}
-
 Network::Network(std::vector<unsigned>& topology) {
     this->topology = topology;
     this->numLayers = topology.size();
 
-    for(unsigned layer = 0; layer < this->numLayers; layer++) {
+    for(unsigned layer = 0; layer < this->numLayers; ++layer) {
+        std::cout << "Added a new layer!" << std::endl;
         layers.push_back(Layer());  // Create a new layer
 
-        unsigned numOutputs;
+        unsigned numOutputs = (numLayers == topology.size() - 1) ? 0 : topology[layer + 1];
 
-        if(layer == this->numLayers - 1) {
-            numOutputs = 0;
-        } else {
-            numOutputs = topology[layer + 1];
-        }
-
-        for(unsigned neuron = 0; neuron <= topology[layer]; neuron++) {
-            layers[layers.size() - 1].addNewNeuron(numOutputs, neuron);
+        for(unsigned neuron = 0; neuron <= topology[layer]; ++neuron) {
+            layers.back().addNewNeuron(numOutputs, neuron);
 
             std::cout << "Made a " << neuron << ". neuron and added it to " << layers.size() - 1 << ". layer." << std::endl;
         }
@@ -39,25 +28,61 @@ void Network::feedForward(std::vector<double>& inputValues) {
     }
 
     // Set the original neuron's values
-    for(int i = 0; i < inputValues.size(); i++) {
-        this->layers[0].getNeurons()[i].setOutputValue(inputValues[i]);
+
+    for (unsigned i = 0; i < inputValues.size(); ++i) {
+        layers[0].getNeurons()[i].setOutputValue(inputValues[i]);
     }
 
     // Forward propagate
 
-    for(int layerNum = 1; layerNum < this->layers.size(); layerNum++) {
-        
-        Layer& previousLayer = this->layers[layerNum - 1];
-
-        for(int neuron = 0; neuron < this->layers[layerNum].getNeurons().size() - 1; neuron++) {
-            Neuron neuronRef = this->layers[layerNum].getNeurons()[neuron];
-            neuronRef.feedForwardNeuron(previousLayer);
+    for(int layerNum = 1; layerNum < layers.size(); ++layerNum) {
+        for(int neuron = 0; neuron < layers[layerNum].getNeurons().size() - 1; ++neuron) {
+            layers[layerNum].getNeurons()[neuron].feedForwardNeuron(layers[layerNum - 1]);
         }
     }
 }
 
 Network::~Network() {
     delete this;
+}
+
+void Network::backPropagation(std::vector<double>& targetValues) {
+    Layer& outputLayer = layers.back();
+    error = 0.0;
+
+    for(int i = 0; i < outputLayer.getNeurons().size() - 1; ++i) {
+        double delta = targetValues[i] - outputLayer.getNeurons()[i].getOutputValue();
+        error += delta * delta;
+    }
+
+    error /= outputLayer.getNeurons().size() - 1;
+    error = sqrt(error);
+
+    std::cout << "Error: " << error << std::endl;
+
+    for(int n = 0; n < outputLayer.getNeurons().size() - 1; ++n) {
+        outputLayer.getNeurons()[n].calculateOutputGradients(targetValues[n]);
+    }
+
+    for(int layerNum = layers.size() - 2; layerNum > 0; --layerNum) {
+        for(int n = 0; n < layers[layerNum].getNeurons().size(); ++n) {
+            layers[layerNum].getNeurons()[n].calculateHiddenGradient(layers[layerNum + 1]);
+        }
+    }
+
+    for(int layerNum = layers.size() - 1; layerNum > 0; --layerNum) {
+        for(int n = 0; n < layers[layerNum].getNeurons().size() - 1; ++n) {
+            layers[layerNum].getNeurons()[n].updateInputWeights(layers[layerNum - 1]);
+        }
+    }
+}
+
+void Network::getNeuralResults(std::vector<double>& resultVals) {
+    resultVals.clear();
+
+    for(int n = 0; n < layers.back().getNeurons().size() - 1; ++n) {
+        resultVals.push_back(layers.back().getNeurons()[n].getOutputValue());
+    }
 }
 
 #endif

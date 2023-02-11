@@ -1,2 +1,37 @@
 # NeuralNetwork
 Neural Network that is developed in plain C++ to be able to represent a black-box model of a logic gate given to it by training it.
+
+## MISS knowledge
+Thanking the MISS class from College (Modeling and simulation of systems), we have understood how a Neural Network works. Here that knowledge, alongside OOP concepts is used to showcase a prototype of a black-box model of a neural network.
+
+## What does it do?
+The program is designated to use inputs (`std::vector` of inputs). Inputs used here are a 3d vector, a matrix, of `std::vector`(s). The inputs are stored and sent to the neural network, where they are processed. The output is a vector of results.
+
+## XOR table 
+| A 	| B 	| X 	|
+|---	|---	|---	|
+| 0 	| 0 	| 0 	|
+| 0 	| 1 	| 1 	|
+| 1 	| 0 	| 1 	|
+| 1 	| 1 	| 0 	|
+
+## Example of 0 xor 0 (0 ^ 0) = 0
+![](GithubImages/One.png)
+
+## Example of 0 xor 1 (0 ^ 1) = 1
+![](GithubImages/Two.png)
+
+## More in-depth knowledge of Neural Network used
+The neural network used is a `fully-connected`, `feed-forward` neural network. All nodes (neurons) are connected with every neuron in the next (previous) layer.
+
+![](GithubImages/Three.png)
+
+The method used for sending data is a `feed-forward` method. Feedforward is the reverse exercise of feedback. It's the process of replacing positive or negative feedback with future-oriented solutions. In simple terms, it means focusing on the future instead of the past.
+
+![](GithubImages/Four.png)
+
+The method used for training the neural network, is `data-propagation` method.
+Backpropagation, or backward propagation of errors, is an algorithm that is designed to test for errors working back from output nodes to input nodes.
+
+## Credits
+[Abhishek Pandey](https://www.youtube.com/@abhishekpandey4427) - tutorial for Neural network

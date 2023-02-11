@@ -26,6 +26,7 @@ private:
     double outputValue;
     std::vector<Connection> outputWeights;
     int index;
+    double gradient;
 
 public:
     Neuron(unsigned numOutputs, int index);
@@ -34,9 +35,14 @@ public:
     void setOutputWeights(std::vector<Connection> outputWeights);
     std::vector<Connection> getOutputWeights();
     void feedForwardNeuron(Layer& previousLayer);
-    double transferFunction(double x);
-    double transferFunctionDerivative(double x);
-
+    static double transferFunction(double x);
+    static double transferFunctionDerivative(double x);
+    void calculateOutputGradients(double targetValue);
+    void calculateHiddenGradient(Layer& nextLayer);
+    double sumDOW(Layer& nextLayer);
+    void updateInputWeights(Layer& previousLayer);
+    static double eta;
+    static double alpha;
 };
 
 #endif

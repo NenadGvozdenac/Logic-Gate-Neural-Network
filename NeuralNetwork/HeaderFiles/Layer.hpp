@@ -10,7 +10,7 @@ private:
 
 public:
     void setNeurons(std::vector<Neuron> neurons);
-    std::vector<Neuron> getNeurons();
+    std::vector<Neuron>& getNeurons();
     void addNewNeuron(unsigned outputNum, int neuronNum);
 };
 

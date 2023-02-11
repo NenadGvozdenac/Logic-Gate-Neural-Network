@@ -1,4 +1,0 @@
-#ifndef NEURON_CPP_INCLUDED
-#define NEURON_CPP_INCLUDED
-
-#endif
