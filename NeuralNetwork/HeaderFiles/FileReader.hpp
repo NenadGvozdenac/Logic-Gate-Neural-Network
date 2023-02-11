@@ -1,0 +1,4 @@
+#ifndef FILEREADER_HPP_INCLUDED
+#define FILEREADER_HPP_INCLUDED
+
+#endif
